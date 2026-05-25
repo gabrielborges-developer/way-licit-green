@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Search, Filter, Heart, FileText, ArrowRight, CheckCircle2, Shield, Zap, Users, TrendingUp, Building2, Clock, Award } from "lucide-react";
+import { Search, ArrowUpRight, CheckCircle2, Shield, Zap, Users, TrendingUp, Building2, Calendar, Sparkles, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -15,66 +15,35 @@ export const Route = createFileRoute("/")({
 });
 
 const processos = [
-  {
-    id: "WAY-001",
-    numero: "035/2025",
-    tipo: "Credenciamento",
-    orgao: "Prefeitura Municipal de Belo Horizonte",
-    objeto: "Credenciamento de empresas para prestação de serviços de saúde complementar ao SUS, com atendimento ambulatorial e exames especializados.",
-    data: "20/05/2026",
-    status: "Aberto",
-  },
-  {
-    id: "WAY-002",
-    numero: "024/2025",
-    tipo: "Credenciamento",
-    orgao: "Prefeitura Municipal de Curitiba",
-    objeto: "Credenciamento de empresas especializadas em consultoria técnica e intelectual para acompanhamento estratégico das demandas municipais.",
-    data: "18/05/2026",
-    status: "Aberto",
-  },
-  {
-    id: "WAY-003",
-    numero: "052/2025",
-    tipo: "Inexigibilidade",
-    orgao: "Prefeitura Municipal de Jaboatão dos Guararapes",
-    objeto: "Aquisição de inscrições para servidores da Secretaria Municipal de Educação participarem de capacitação técnica nacional.",
-    data: "15/05/2026",
-    status: "Aberto",
-  },
-  {
-    id: "WAY-004",
-    numero: "046/2025",
-    tipo: "Credenciamento",
-    orgao: "Prefeitura Municipal de São Lourenço",
-    objeto: "Credenciamento de fornecedores para impressão de material gráfico exclusivo de combate à Dengue para a Vigilância Epidemiológica.",
-    data: "12/05/2026",
-    status: "Aberto",
-  },
-  {
-    id: "WAY-005",
-    numero: "118/2025",
-    tipo: "Credenciamento",
-    orgao: "Prefeitura Municipal de Barra Longa",
-    objeto: "Credenciamento de prestadores de serviços médicos especializados nas áreas de cardiologia, ortopedia e pediatria.",
-    data: "10/05/2026",
-    status: "Aberto",
-  },
+  { id: "WAY-001", numero: "035/2025", tipo: "Credenciamento", orgao: "Prefeitura Municipal de Belo Horizonte", uf: "MG", objeto: "Credenciamento de empresas para prestação de serviços de saúde complementar ao SUS, com atendimento ambulatorial e exames especializados.", data: "20/05/2026", prazo: "12 dias" },
+  { id: "WAY-002", numero: "024/2025", tipo: "Credenciamento", orgao: "Prefeitura Municipal de Curitiba", uf: "PR", objeto: "Credenciamento de empresas especializadas em consultoria técnica e intelectual para acompanhamento estratégico das demandas municipais.", data: "18/05/2026", prazo: "10 dias" },
+  { id: "WAY-003", numero: "052/2025", tipo: "Inexigibilidade", orgao: "Prefeitura Municipal de Jaboatão dos Guararapes", uf: "PE", objeto: "Aquisição de inscrições para servidores da Secretaria Municipal de Educação participarem de capacitação técnica nacional.", data: "15/05/2026", prazo: "7 dias" },
+  { id: "WAY-004", numero: "046/2025", tipo: "Credenciamento", orgao: "Prefeitura Municipal de São Lourenço", uf: "MG", objeto: "Credenciamento de fornecedores para impressão de material gráfico exclusivo de combate à Dengue para a Vigilância Epidemiológica.", data: "12/05/2026", prazo: "4 dias" },
+  { id: "WAY-005", numero: "118/2025", tipo: "Credenciamento", orgao: "Prefeitura Municipal de Barra Longa", uf: "MG", objeto: "Credenciamento de prestadores de serviços médicos especializados nas áreas de cardiologia, ortopedia e pediatria.", data: "10/05/2026", prazo: "2 dias" },
 ];
 
 function Index() {
   return (
     <div className="min-h-screen bg-background">
+      {/* Top utility bar */}
+      <div className="border-b border-border bg-foreground text-background">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 text-xs">
+          <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" /> Portal oficial de credenciamento — Lei 14.133/21</span>
+          <span className="hidden sm:block opacity-70">Suporte: contato@waysistemas.com.br</span>
+        </div>
+      </div>
+
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[image:var(--gradient-primary)] shadow-[var(--shadow-elegant)]">
-              <span className="text-lg font-black text-primary-foreground">W</span>
+            <div className="relative flex h-10 w-10 items-center justify-center rounded-lg bg-foreground">
+              <span className="text-lg font-black text-primary">W</span>
+              <span className="absolute -bottom-1 -right-1 h-3 w-3 rounded-full bg-primary ring-2 ring-background" />
             </div>
             <div className="flex flex-col leading-none">
-              <span className="text-lg font-black tracking-tight text-foreground">WAY</span>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">Sistemas</span>
+              <span className="text-base font-black tracking-tight text-foreground">WAY Sistemas</span>
+              <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">Licitações públicas</span>
             </div>
           </div>
           <nav className="hidden items-center gap-8 md:flex">
@@ -84,189 +53,169 @@ function Index() {
           </nav>
           <div className="flex items-center gap-2">
             <Button variant="ghost" className="text-foreground hover:bg-secondary">Entrar</Button>
-            <Button variant="hero">Cadastrar</Button>
+            <Button variant="hero" className="rounded-full">Cadastrar</Button>
           </div>
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[image:var(--gradient-soft)]" />
-        <div className="absolute -top-40 right-0 h-[500px] w-[500px] rounded-full bg-[image:var(--gradient-primary)] opacity-20 blur-3xl" />
-        <div className="absolute -bottom-40 -left-20 h-[400px] w-[400px] rounded-full bg-primary-glow opacity-10 blur-3xl" />
+      {/* Hero — dark editorial */}
+      <section className="relative overflow-hidden bg-foreground text-background">
+        <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "32px 32px" }} />
+        <div className="absolute right-[-10%] top-[-30%] h-[600px] w-[600px] rounded-full bg-primary/30 blur-[140px]" />
 
         <div className="relative mx-auto max-w-7xl px-6 py-20 lg:py-28">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div>
-              <Badge variant="outline" className="mb-6 border-primary/30 bg-primary/5 text-primary">
-                <span className="mr-2 h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-                Plataforma oficial de credenciamento
-              </Badge>
-              <h1 className="text-5xl font-black tracking-tight text-foreground lg:text-6xl">
-                Credenciamento de fornecedores,
-                <span className="block bg-[image:var(--gradient-primary)] bg-clip-text text-transparent">
-                  simples e transparente.
-                </span>
+          <div className="grid gap-14 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-7">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                <Sparkles className="h-3 w-3" /> Novo • 12 editais publicados esta semana
+              </div>
+              <h1 className="text-[clamp(2.5rem,6vw,4.5rem)] font-black leading-[0.95] tracking-tight">
+                Credenciar é<br />
+                <span className="text-primary">mais simples</span><br />
+                quando é<span className="italic font-serif font-normal"> direto.</span>
               </h1>
-              <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-                A WAY Sistemas conecta órgãos públicos e fornecedores em processos licitatórios abertos. Cadastre-se uma vez, participe quantas vezes quiser.
+              <p className="mt-8 max-w-xl text-lg text-background/70">
+                A plataforma WAY conecta fornecedores aos editais de credenciamento de órgãos públicos do Brasil inteiro. Sem burocracia, sem intermediário.
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button variant="hero" size="lg" className="gap-2">
-                  Cadastrar fornecedor <ArrowRight className="h-4 w-4" />
+              <div className="mt-10 flex flex-wrap gap-3">
+                <Button variant="hero" size="lg" className="rounded-full gap-2">
+                  Cadastrar fornecedor <ArrowUpRight className="h-4 w-4" />
                 </Button>
-                <Button variant="outline" size="lg" className="border-primary/30 text-foreground hover:bg-primary/5">
-                  Ver processos abertos
+                <Button size="lg" variant="outline" className="rounded-full border-background/30 bg-transparent text-background hover:bg-background/10 hover:text-background">
+                  Ver editais abertos
                 </Button>
-              </div>
-
-              <div className="mt-12 grid grid-cols-3 gap-6 border-t border-border pt-8">
-                <div>
-                  <div className="text-3xl font-black text-foreground">+2.400</div>
-                  <div className="text-xs uppercase tracking-wider text-muted-foreground">Fornecedores</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-black text-foreground">+180</div>
-                  <div className="text-xs uppercase tracking-wider text-muted-foreground">Órgãos públicos</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-black text-foreground">98%</div>
-                  <div className="text-xs uppercase tracking-wider text-muted-foreground">Aprovação</div>
-                </div>
               </div>
             </div>
 
-            {/* Hero card preview */}
-            <div className="relative">
-              <div className="absolute inset-0 rounded-3xl bg-[image:var(--gradient-primary)] opacity-30 blur-2xl" />
-              <div className="relative rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
-                <div className="mb-4 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-primary" />
-                    <span className="text-sm font-semibold text-foreground">Processo de Credenciamento</span>
+            {/* Right side: ticker stack */}
+            <div className="lg:col-span-5 space-y-3">
+              {[
+                { k: "Editais ativos", v: "247", trend: "+18%" },
+                { k: "Fornecedores", v: "2.412", trend: "+9%" },
+                { k: "Órgãos parceiros", v: "186", trend: "+12%" },
+              ].map((s, i) => (
+                <div key={s.k} className="flex items-center justify-between rounded-2xl border border-background/15 bg-background/[0.04] px-6 py-5 backdrop-blur">
+                  <div>
+                    <div className="text-[11px] font-medium uppercase tracking-widest text-background/60">{String(i + 1).padStart(2, "0")} · {s.k}</div>
+                    <div className="mt-1 text-4xl font-black tabular-nums">{s.v}</div>
                   </div>
-                  <Badge className="bg-primary/10 text-primary hover:bg-primary/15">Aberto</Badge>
+                  <Badge className="rounded-full bg-primary/15 text-primary hover:bg-primary/20 border border-primary/30">{s.trend}</Badge>
                 </div>
-                <div className="space-y-4">
-                  {[
-                    { label: "Dados da empresa", done: true },
-                    { label: "Documentação fiscal", done: true },
-                    { label: "Atestados técnicos", done: true },
-                    { label: "Proposta enviada", done: false },
-                  ].map((step, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <div className={`flex h-8 w-8 items-center justify-center rounded-full ${step.done ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground"}`}>
-                        {step.done ? <CheckCircle2 className="h-4 w-4" /> : <Clock className="h-4 w-4" />}
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-sm font-medium text-foreground">{step.label}</div>
-                        <div className="h-1.5 mt-1 overflow-hidden rounded-full bg-secondary">
-                          <div className={`h-full bg-[image:var(--gradient-primary)] ${step.done ? "w-full" : "w-1/3"}`} />
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <Button variant="hero" className="mt-6 w-full">Continuar credenciamento</Button>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Search + Processos */}
-      <section id="processos" className="mx-auto max-w-7xl px-6 py-16">
-        <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      {/* Processos — list with sidebar */}
+      <section id="processos" className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="text-3xl font-black tracking-tight text-foreground">Processos abertos</h2>
-            <p className="mt-1 text-muted-foreground">Encontre oportunidades de credenciamento em tempo real.</p>
+            <div className="text-xs font-bold uppercase tracking-[0.25em] text-primary">— Oportunidades</div>
+            <h2 className="mt-2 text-4xl font-black tracking-tight text-foreground">Processos abertos agora</h2>
           </div>
-          <Badge variant="outline" className="w-fit border-primary/30 bg-primary/5 text-primary">
-            <Heart className="mr-1.5 h-3 w-3 fill-primary" /> Favoritos
-          </Badge>
-        </div>
-
-        <div className="mb-6 flex flex-col gap-3 rounded-2xl border border-border bg-card p-3 shadow-[var(--shadow-card)] sm:flex-row">
-          <Button variant="outline" className="gap-2 border-primary/20 text-foreground hover:bg-primary/5">
-            <Filter className="h-4 w-4" /> Filtros
-          </Button>
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              placeholder="Pesquise por ID, número do processo, órgão público ou objeto"
-              className="border-0 bg-secondary/50 pl-10 text-foreground placeholder:text-muted-foreground focus-visible:ring-primary"
-            />
+          <div className="relative w-full max-w-sm">
+            <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input placeholder="Buscar por órgão, número ou objeto" className="h-12 rounded-full border-border bg-secondary/40 pl-11 pr-4 focus-visible:ring-primary" />
           </div>
         </div>
 
-        <div className="space-y-4">
-          {processos.map((p) => (
-            <article
-              key={p.id}
-              className="group relative grid grid-cols-[140px_1fr_120px_56px] overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-elegant)] hover:-translate-y-0.5"
-            >
-              {/* Left tag */}
-              <div className="relative flex flex-col items-center justify-center bg-[image:var(--gradient-card)] p-6 text-primary-foreground">
-                <Badge className="absolute left-3 top-3 bg-primary-foreground/15 text-[10px] text-primary-foreground backdrop-blur hover:bg-primary-foreground/20">
-                  {p.numero}
-                </Badge>
-                <Award className="mb-2 h-7 w-7" />
-                <span className="text-xs font-bold uppercase tracking-wider">{p.tipo}</span>
+        <div className="grid gap-6 lg:grid-cols-[260px_1fr]">
+          {/* Sidebar filters */}
+          <aside className="space-y-6 rounded-2xl border border-border bg-card p-6 h-fit lg:sticky lg:top-24">
+            <div>
+              <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-muted-foreground">Tipo</h3>
+              <div className="space-y-2">
+                {["Credenciamento", "Inexigibilidade", "Pregão eletrônico", "Concorrência"].map((t, i) => (
+                  <label key={t} className="flex cursor-pointer items-center justify-between rounded-lg px-3 py-2 text-sm text-foreground transition-colors hover:bg-secondary">
+                    <span className="flex items-center gap-2">
+                      <span className={`h-2 w-2 rounded-full ${i === 0 ? "bg-primary" : "bg-border"}`} />
+                      {t}
+                    </span>
+                    <span className="text-xs text-muted-foreground">{[28, 14, 9, 6][i]}</span>
+                  </label>
+                ))}
               </div>
+            </div>
+            <div className="border-t border-border pt-5">
+              <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-muted-foreground">Região</h3>
+              <div className="flex flex-wrap gap-1.5">
+                {["MG", "SP", "PR", "PE", "RS", "BA", "CE"].map((uf) => (
+                  <button key={uf} className="rounded-md border border-border px-2.5 py-1 text-xs font-semibold text-foreground transition-colors hover:border-primary hover:bg-primary/5 hover:text-primary">
+                    {uf}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-xl bg-foreground p-4 text-background">
+              <div className="text-xs uppercase tracking-wider text-primary">Pro tip</div>
+              <p className="mt-2 text-sm">Receba alertas dos editais que combinam com sua área.</p>
+              <Button size="sm" className="mt-3 w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90">Ativar alertas</Button>
+            </div>
+          </aside>
 
-              {/* Content */}
-              <div className="p-6">
-                <div className="mb-2 flex items-center gap-2">
-                  <Building2 className="h-4 w-4 text-primary" />
-                  <h3 className="font-bold text-foreground">{p.orgao}</h3>
+          {/* List */}
+          <div className="divide-y divide-border rounded-2xl border border-border bg-card">
+            {processos.map((p, i) => (
+              <article key={p.id} className="group relative grid grid-cols-[auto_1fr_auto] items-center gap-6 px-6 py-6 transition-colors hover:bg-secondary/40">
+                <div className="absolute left-0 top-6 bottom-6 w-1 rounded-r bg-primary opacity-0 transition-opacity group-hover:opacity-100" />
+                <div className="flex flex-col items-center gap-1 text-center">
+                  <div className="font-mono text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Nº</div>
+                  <div className="font-mono text-sm font-black text-foreground">{p.numero}</div>
+                  <span className="mt-1 inline-flex h-6 items-center rounded-full bg-primary/10 px-2 text-[10px] font-bold uppercase tracking-wider text-primary">{p.tipo}</span>
                 </div>
-                <p className="line-clamp-2 text-sm text-muted-foreground">{p.objeto}</p>
-                <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-                  <span className="font-mono font-semibold text-foreground">ID {p.id}</span>
-                  <span className="h-1 w-1 rounded-full bg-border" />
-                  <span>{p.numero}</span>
-                  <span className="h-1 w-1 rounded-full bg-border" />
-                  <span>{p.data}</span>
+                <div className="min-w-0">
+                  <div className="mb-1.5 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                    <span className="font-mono font-semibold text-foreground">{p.id}</span>
+                    <span className="h-1 w-1 rounded-full bg-border" />
+                    <span className="inline-flex items-center gap-1"><MapPin className="h-3 w-3" /> {p.uf}</span>
+                    <span className="h-1 w-1 rounded-full bg-border" />
+                    <span className="inline-flex items-center gap-1"><Calendar className="h-3 w-3" /> {p.data}</span>
+                  </div>
+                  <h3 className="flex items-center gap-2 font-bold text-foreground">
+                    <Building2 className="h-4 w-4 text-primary shrink-0" /> {p.orgao}
+                  </h3>
+                  <p className="mt-1.5 line-clamp-2 text-sm text-muted-foreground">{p.objeto}</p>
                 </div>
-              </div>
-
-              {/* Contract chip */}
-              <div className="flex flex-col items-center justify-center gap-1 border-l border-border bg-secondary/30">
-                <FileText className="h-5 w-5 text-primary" />
-                <span className="text-xs font-semibold text-foreground">Contrato</span>
-              </div>
-
-              {/* Arrow */}
-              <button className="flex items-center justify-center bg-[image:var(--gradient-primary)] text-primary-foreground transition-transform group-hover:scale-105">
-                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </button>
-            </article>
-          ))}
+                <div className="flex flex-col items-end gap-3">
+                  <div className="text-right">
+                    <div className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">Encerra em</div>
+                    <div className="text-sm font-black text-foreground">{p.prazo}</div>
+                  </div>
+                  <button className="flex h-10 w-10 items-center justify-center rounded-full bg-foreground text-primary transition-transform group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground">
+                    <ArrowUpRight className="h-4 w-4" />
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Como funciona */}
-      <section id="como-funciona" className="border-y border-border bg-secondary/30 py-20">
+      {/* Como funciona — horizontal numbered */}
+      <section id="como-funciona" className="border-y border-border bg-secondary/30 py-24">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mx-auto max-w-2xl text-center">
-            <Badge variant="outline" className="mb-4 border-primary/30 bg-background text-primary">Como funciona</Badge>
-            <h2 className="text-4xl font-black tracking-tight text-foreground">Três passos para se credenciar</h2>
-            <p className="mt-3 text-muted-foreground">Um fluxo enxuto, pensado para fornecedores de qualquer porte.</p>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <div className="text-xs font-bold uppercase tracking-[0.25em] text-primary">— Processo</div>
+              <h2 className="mt-2 text-4xl font-black tracking-tight text-foreground max-w-xl">Três passos. Zero papel.</h2>
+            </div>
+            <p className="max-w-sm text-muted-foreground">Um fluxo desenhado para fornecedores de qualquer porte, com validação automática.</p>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-border bg-border md:grid-cols-3">
             {[
-              { n: "01", icon: Users, title: "Cadastre sua empresa", desc: "Envie os dados e a documentação uma única vez. A WAY mantém tudo seguro e validado." },
-              { n: "02", icon: Search, title: "Explore processos abertos", desc: "Filtre por região, tipo e órgão. Receba alertas dos editais que combinam com você." },
-              { n: "03", icon: CheckCircle2, title: "Envie sua proposta", desc: "Acompanhe cada etapa do credenciamento com transparência total e em tempo real." },
+              { n: "01", icon: Users, title: "Cadastre sua empresa", desc: "Envie os dados e a documentação uma única vez. Mantemos tudo seguro e validado." },
+              { n: "02", icon: Search, title: "Explore editais", desc: "Filtre por região, tipo e órgão. Receba alertas dos editais que combinam com você." },
+              { n: "03", icon: CheckCircle2, title: "Envie sua proposta", desc: "Acompanhe cada etapa do credenciamento com transparência total em tempo real." },
             ].map((step) => (
-              <div key={step.n} className="relative rounded-2xl border border-border bg-card p-7 shadow-[var(--shadow-card)]">
-                <div className="absolute -top-3 right-6 rounded-full bg-[image:var(--gradient-primary)] px-3 py-1 text-xs font-black text-primary-foreground shadow-[var(--shadow-elegant)]">
-                  {step.n}
+              <div key={step.n} className="group relative bg-card p-8 transition-colors hover:bg-foreground">
+                <div className="flex items-start justify-between">
+                  <span className="font-mono text-5xl font-black text-primary">{step.n}</span>
+                  <step.icon className="h-7 w-7 text-foreground transition-colors group-hover:text-primary" />
                 </div>
-                <step.icon className="h-10 w-10 text-primary" />
-                <h3 className="mt-4 text-lg font-bold text-foreground">{step.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{step.desc}</p>
+                <h3 className="mt-12 text-xl font-bold text-foreground transition-colors group-hover:text-background">{step.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground transition-colors group-hover:text-background/70">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -274,31 +223,31 @@ function Index() {
       </section>
 
       {/* Benefícios */}
-      <section id="beneficios" className="mx-auto max-w-7xl px-6 py-20">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center">
-          <div>
-            <Badge variant="outline" className="mb-4 border-primary/30 bg-primary/5 text-primary">Por que WAY</Badge>
-            <h2 className="text-4xl font-black tracking-tight text-foreground">Construído para a transparência pública.</h2>
+      <section id="beneficios" className="mx-auto max-w-7xl px-6 py-24">
+        <div className="grid gap-14 lg:grid-cols-[1fr_1.4fr] lg:items-start">
+          <div className="lg:sticky lg:top-24">
+            <div className="text-xs font-bold uppercase tracking-[0.25em] text-primary">— Por que WAY</div>
+            <h2 className="mt-2 text-4xl font-black tracking-tight text-foreground">Transparência pública, sem fricção.</h2>
             <p className="mt-4 text-muted-foreground">
               Reduzimos a burocracia entre administração pública e fornecedores. Tudo rastreável, auditável e em conformidade com a Lei 14.133/21.
             </p>
-            <Button variant="hero" size="lg" className="mt-6 gap-2">
-              Conhecer a plataforma <ArrowRight className="h-4 w-4" />
+            <Button variant="hero" size="lg" className="mt-8 rounded-full gap-2">
+              Conhecer a plataforma <ArrowUpRight className="h-4 w-4" />
             </Button>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {[
-              { icon: Shield, title: "Conformidade legal", desc: "Aderente à Nova Lei de Licitações." },
-              { icon: Zap, title: "Processo rápido", desc: "Credenciamento concluído em minutos." },
-              { icon: TrendingUp, title: "Mais oportunidades", desc: "Acesso a editais de todo o país." },
-              { icon: Users, title: "Suporte humano", desc: "Equipe especializada para fornecedores." },
-            ].map((b) => (
-              <div key={b.title} className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-[var(--transition-smooth)] hover:border-primary/40 hover:shadow-[var(--shadow-elegant)]">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10">
-                  <b.icon className="h-5 w-5 text-primary" />
+              { icon: Shield, title: "Conformidade legal", desc: "Aderente à Nova Lei de Licitações 14.133/21." },
+              { icon: Zap, title: "Processo rápido", desc: "Credenciamento concluído em minutos, não dias." },
+              { icon: TrendingUp, title: "Mais oportunidades", desc: "Acesso a editais de todo o território nacional." },
+              { icon: Users, title: "Suporte humano", desc: "Equipe especializada para acompanhar fornecedores." },
+            ].map((b, i) => (
+              <div key={b.title} className={`rounded-2xl border border-border bg-card p-7 transition-colors hover:border-primary ${i % 2 === 0 ? "sm:translate-y-6" : ""}`}>
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                  <b.icon className="h-5 w-5" />
                 </div>
-                <h3 className="mt-4 font-bold text-foreground">{b.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{b.desc}</p>
+                <h3 className="mt-5 font-bold text-foreground">{b.title}</h3>
+                <p className="mt-1.5 text-sm text-muted-foreground">{b.desc}</p>
               </div>
             ))}
           </div>
@@ -306,22 +255,25 @@ function Index() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 pb-20">
-        <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-[image:var(--gradient-primary)] p-12 text-center shadow-[var(--shadow-elegant)] lg:p-16">
-          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-primary-foreground/10 blur-3xl" />
-          <div className="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-primary-foreground/10 blur-3xl" />
-          <div className="relative">
-            <h2 className="text-4xl font-black tracking-tight text-primary-foreground lg:text-5xl">
-              Pronto para participar de novas licitações?
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-primary-foreground/80">
-              Cadastre sua empresa hoje e seja avisado quando um novo edital de credenciamento for publicado.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Button size="lg" className="bg-background text-foreground hover:bg-background/90">
-                Cadastrar fornecedor
+      <section className="px-6 pb-24">
+        <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] bg-foreground p-12 lg:p-20">
+          <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-primary/30 blur-[120px]" />
+          <div className="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-primary/20 blur-[100px]" />
+          <div className="relative grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-center">
+            <div>
+              <div className="text-xs font-bold uppercase tracking-[0.25em] text-primary">— Comece agora</div>
+              <h2 className="mt-3 text-4xl font-black tracking-tight text-background lg:text-5xl">
+                Pronto para ganhar a próxima licitação?
+              </h2>
+              <p className="mt-4 max-w-xl text-background/70">
+                Cadastre sua empresa hoje e seja avisado quando um novo edital de credenciamento for publicado.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3">
+              <Button size="lg" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 h-14 text-base gap-2">
+                Cadastrar fornecedor <ArrowUpRight className="h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline" className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10">
+              <Button size="lg" variant="outline" className="rounded-full border-background/30 bg-transparent text-background hover:bg-background/10 hover:text-background h-14 text-base">
                 Falar com a WAY
               </Button>
             </div>
@@ -331,14 +283,14 @@ function Index() {
 
       {/* Footer */}
       <footer className="border-t border-border bg-card">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-8 sm:flex-row">
-          <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[image:var(--gradient-primary)]">
-              <span className="text-sm font-black text-primary-foreground">W</span>
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-8 sm:flex-row">
+          <div className="flex items-center gap-2">
+            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-foreground">
+              <span className="text-xs font-black text-primary">W</span>
             </div>
-            <span className="text-sm font-semibold text-foreground">WAY Sistemas © 2026</span>
+            <span className="text-sm font-semibold text-foreground">WAY Sistemas</span>
           </div>
-          <p className="text-xs text-muted-foreground">Plataforma de credenciamento e licitações públicas.</p>
+          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} WAY Sistemas. Todos os direitos reservados.</p>
         </div>
       </footer>
     </div>
