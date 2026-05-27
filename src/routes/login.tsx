@@ -27,8 +27,57 @@ function LoginPage() {
 
   return (
     <div className="min-h-screen grid lg:grid-cols-2 bg-background">
+      {/* Visual side - image */}
+      <div className="hidden lg:block relative overflow-hidden order-1">
+        <img
+          src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1600&q=80"
+          alt="Profissionais analisando documentos de licitação"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-[image:var(--gradient-primary)] opacity-80 mix-blend-multiply" />
+        <div className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
+            backgroundSize: "44px 44px",
+          }}
+        />
+
+        <div className="relative h-full flex flex-col justify-between p-12 text-primary-foreground">
+          <div className="flex items-center gap-2 text-sm font-medium">
+            <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
+            Plataforma online · 247 editais ativos
+          </div>
+
+          <div className="space-y-8">
+            <div className="text-[10px] font-mono tracking-[0.3em] opacity-80">
+              WAY • LICITA / 2026
+            </div>
+            <h2 className="text-4xl xl:text-5xl font-semibold leading-[1.1] tracking-tight max-w-md drop-shadow">
+              Credenciamento, transparência e velocidade em um só lugar.
+            </h2>
+            <p className="text-primary-foreground/90 max-w-md">
+              Centralize processos licitatórios, conecte fornecedores qualificados e mantenha conformidade legal com a Lei 14.133/21.
+            </p>
+
+            <div className="grid grid-cols-3 gap-6 max-w-md pt-6 border-t border-white/20">
+              <Stat n="2.4k" l="Fornecedores" />
+              <Stat n="186" l="Órgãos" />
+              <Stat n="98%" l="Conformidade" />
+            </div>
+          </div>
+
+          <blockquote className="max-w-md text-sm">
+            <p className="opacity-95 leading-relaxed">
+              "Reduzimos em 60% o tempo de credenciamento depois que migramos para a WAY."
+            </p>
+            <footer className="mt-3 text-xs opacity-80">— Diretoria de Compras, Prefeitura parceira</footer>
+          </blockquote>
+        </div>
+      </div>
+
       {/* Form side */}
-      <div className="flex flex-col px-6 sm:px-12 lg:px-20 py-10">
+      <div className="flex flex-col px-6 sm:px-12 lg:px-20 py-10 order-2">
         <Link to="/" className="inline-flex items-center gap-2 group w-fit">
           <span className="grid place-items-center h-10 w-10 rounded-xl bg-[image:var(--gradient-primary)] text-primary-foreground font-black shadow-[var(--shadow-elegant)]">
             W
