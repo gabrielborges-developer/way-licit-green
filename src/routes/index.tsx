@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Search, ArrowUpRight, CheckCircle2, Shield, Zap, Users, TrendingUp, Building2, Calendar, Sparkles, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -52,7 +52,7 @@ function Index() {
             <a href="#beneficios" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Benefícios</a>
           </nav>
           <div className="flex items-center gap-2">
-            <Button variant="ghost" className="text-foreground hover:bg-secondary">Entrar</Button>
+            <Button asChild variant="ghost" className="text-foreground hover:bg-secondary"><Link to="/login">Entrar</Link></Button>
             <Button variant="hero" className="rounded-full">Cadastrar</Button>
           </div>
         </div>
